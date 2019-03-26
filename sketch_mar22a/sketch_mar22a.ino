@@ -19,9 +19,9 @@ Pixy pixy;
 #define left_data 20 //changeme to a good pin
 #define right_data 21 //changeme to a good pin
 ////////////////////////////////////////////////#leds, led data pin
-Adafruit_NeoPixel headlight = Adafruit_NeoPixel(19, led_data, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel leftIndicator = Adafruit_NeoPixel(19, led_data, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel rightIndicator = Adafruit_NeoPixel(19, led_data, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel headlight = Adafruit_NeoPixel(19, headlight_data, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel leftIndicator = Adafruit_NeoPixel(19, left_data, NEO_GRB + NEO_KHZ800);
+Adafruit_NeoPixel rightIndicator = Adafruit_NeoPixel(19, right_data, NEO_GRB + NEO_KHZ800);
 //----
 uint32_t green100L = leftIndicator.Color(0, 255, 0);
 uint32_t yellow100L = leftIndicator.Color(255, 255, 0);
@@ -204,7 +204,7 @@ void blinkStrip(int startled, int endled, int countby, uint32_t color, int segme
 //---------------
   blinkInterval = blinkTime;
   unsigned long currentMillis = millis();
-  if (currentMillis - previousMillis >= interval) {
+  if (currentMillis - previousMillis >= blinkInterval) {
     // save the last time you blinked the LED
     previousMillis = currentMillis;
   if (blinkState == 0) {
